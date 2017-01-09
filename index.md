@@ -36,7 +36,7 @@ ggplot(data = tweets, aes(x = timestamp)) +
 ```
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Tweets_over_time.png?raw=true)
 
-We can also try to find out the tweeting pattern over days by using the wday() function from lubridate and specify the breaks for the histogram.
+We can try to find out the tweeting pattern over days by using the wday() function from lubridate and specify the breaks for the histogram.
 
 ```r
 ggplot(data = tweets, aes(x = wday(timestamp, label = TRUE))) +
@@ -46,4 +46,15 @@ ggplot(data = tweets, aes(x = wday(timestamp, label = TRUE))) +
   scale_fill_gradient(low = "aquamarine2", high = "orange2")
 ```
 
+![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Days.png?raw=true)
+
+We can also try to find out the tweeting pattern over months by using the month() function from lubridate. 
+
+```r
+ggplot(data = tweets, aes(x = month(timestamp, label = TRUE))) +
+  geom_bar(aes(fill = ..count..)) +
+  theme(legend.position = "none") +
+  xlab("Month") + ylab("Number of tweets") + 
+  scale_fill_gradient(low = "aquamarine2", high = "orange2")
+```
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Days.png?raw=true)
