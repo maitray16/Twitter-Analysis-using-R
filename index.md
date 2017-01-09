@@ -113,10 +113,11 @@ Lastly, let’s look at the distribution of the number of characters in my tweet
  ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Chars.png?raw=true)
  
  <H2>Word Cloud</H2>
- We'll try to find the most occurences in the tweets
+
+We'll try to find the most occurences in the tweets
  
- ```r
- nohandles <- str_replace_all(tweets$text, "@\\m+", "")
+```r
+nohandles <- str_replace_all(tweets$text, "@\\m+", "")
 wordCorpus <- Corpus(VectorSource(nohandles))
 wordCorpus <- tm_map(wordCorpus, removePunctuation)
 wordCorpus <- tm_map(wordCorpus, content_transformer(tolower))
