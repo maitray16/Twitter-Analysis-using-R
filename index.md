@@ -48,9 +48,6 @@ ggplot(data = tweets, aes(x = wday(timestamp, label = TRUE))) +
 
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Days.png?raw=true)
 
-<H2> HashTags, Retweets and Replies </H2>
-
-
 We can also try to find out the tweeting pattern over months by using the month() function from lubridate. 
 
 ```r
