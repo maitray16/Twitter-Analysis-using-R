@@ -34,5 +34,5 @@ ggplot(data = tweets, aes(x = timestamp)) +
   xlab("Time") + ylab("Number of tweets") + 
   scale_fill_gradient(low = "aquamarine2", high = "orange2")
 ```
-![alt text](https://github.com/maitray16/Twitter-Analysis/blob/master/Images/Tweets_over_time.png?raw=true")
+![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Tweets_over_time.png?raw=true)
 
