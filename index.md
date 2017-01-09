@@ -111,6 +111,7 @@ Lastly, let’s look at the distribution of the number of characters in my tweet
         scale_fill_gradient(low = "midnightblue", high = "aquamarine4")
  ```
  
+ 
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Chars.png?raw=true)
  
 
