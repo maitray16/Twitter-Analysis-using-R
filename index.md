@@ -124,7 +124,6 @@ wordCorpus <- tm_map(wordCorpus, content_transformer(tolower))
 wordCorpus <- tm_map(wordCorpus, removeWords, stopwords("english"))
 wordCorpus <- tm_map(wordCorpus, removeWords, c("amp", "2yo", "3yo", "4yo"))
 wordCorpus <- tm_map(wordCorpus, stripWhitespace)
-
 pal <- brewer.pal(9,"YlGnBu")
 pal <- pal[-(1:4)]
 set.seed(123)
