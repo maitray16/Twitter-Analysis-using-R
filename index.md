@@ -46,4 +46,4 @@ ggplot(data = tweets, aes(x = wday(timestamp, label = TRUE))) +
   scale_fill_gradient(low = "aquamarine2", high = "orange2")
 ```
 
-![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Days?raw=true)
+![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Days.png?raw=true)
