@@ -74,5 +74,43 @@ ggplot(tweets, aes(factor(grepl("#", tweets$text)))) +
 
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/HashTag.png?raw=true)
 
+One of the columns in the CSV file from Twitter codes whether the tweet is a retweet or not, so it is not tough to see how many tweets are retweeted vs. original content.
 
+```r
+ggplot(tweets, aes(factor(!is.na(retweeted_status_id)))) +
+  geom_bar(fill = "aquamarine2") + 
+  theme(legend.position="none", axis.title.x = element_blank()) +
+  ylab("Number of tweets") + 
+  ggtitle("Retweeted Tweets") +
+  scale_x_discrete(labels=c("Not retweeted", "Retweeted tweets"))
+```
+![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Retweet.png?raw=true)
+
+There is another column in the CSV file that codes whether the tweet is in reply to another tweet.
+
+```r
+ggplot(tweets, aes(factor(!is.na(in_reply_to_status_id)))) +
+  geom_bar(fill = "aquamarine4") + 
+  theme(legend.position="none", axis.title.x = element_blank()) +
+  ylab("Number of tweets") + 
+  ggtitle("Replied Tweets") +
+  scale_x_discrete(labels=c("Not in reply", "Replied tweets"))
+```
+![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Reply.png?raw=true)
+
+<H2>Number of characters in a tweet</H2>
+
+Lastly, let’s look at the distribution of the number of characters in my tweets. I can use one of the functions from the apply family of functions to count up the characters.
+
+ ```r
+ tweets$charsintweet <- sapply(tweets$text, function(x) nchar(x))
+ ggplot(data = tweets, aes(x = charsintweet)) +
+        geom_histogram(aes(fill = ..count..), binwidth = 8) +
+        theme(legend.position = "none") +
+        xlab("Characters per Tweet") + ylab("Number of tweets") + 
+        scale_fill_gradient(low = "midnightblue", high = "aquamarine4")
+ ```
+ ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/Chars.png?raw=true)
+ 
+ 
 
