@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## Welcome to my Twitter Archive Analysis
 
-You can use the [editor on GitHub](https://github.com/maitray16/Twitter-Analysis-using-R/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+I have recently started learning R and to get a better grip on it. I decided to use different libraries available to perform different kinds on analysis on my twitter archive.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You learn how to download your twitter archive by using this link.
+[Click Here](https://support.twitter.com/articles/20170160)
 
-### Markdown
+After download your twitter archive. We'll start with the next steps. In your R file load the libraries and twitter csv file by using the below code.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+```r
+library(ggplot2)
+library(scales)
+library(lubridate)
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+tweets <- read.csv('tweets.csv', stringsAsFactors = FALSE)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+The timestamp on each tweet is a string at this point, so let’s use a function from the lubridate package to convert the timestamp to a date-time object. The timestamps are recorded in UTC, so to make more interpretable plots, we need to convert to a different time zone. I am combining all my tweets into one timezone for easier representation.
 
-### Jekyll Themes
+```r
+tweets$timestamp <- ymd_hms(tweets$timestamp)
+tweets$timestamp <- with_tz(tweets$timestamp, America/San_Francisco)
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/maitray16/Twitter-Analysis-using-R/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+<H2>Tweets by Year, Month, and Day</H2>
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+First is a basic histogram showing the distribution of my tweets over time.
+
+```r
+ggplot(data = tweets, aes(x = timestamp)) +
+  geom_histogram(aes(fill = ..count..)) +
+  theme(legend.position = "none") +
+  xlab("Time") + ylab("Number of tweets") + 
+  scale_fill_gradient(low = "aquamarine2", high = "orange2")
+```
+![alt text](https://github.com/maitray16/Twitter-Analysis/blob/master/Images/Tweets_over_time.png?raw=true")
+
