@@ -65,6 +65,7 @@ ggplot(data = tweets, aes(x = month(timestamp, label = TRUE))) +
 <H2>Hashtags, Retweets and Replies</H2>
 
 I tried to analyse the tweets to look at my hashtags usage. This can be done using the regex and grep with '#' symbols in the text.
+
 ```r
 ggplot(tweets, aes(factor(grepl("#", tweets$text)))) +
   geom_bar(fill = "orange") + 
@@ -73,6 +74,7 @@ ggplot(tweets, aes(factor(grepl("#", tweets$text)))) +
   ggtitle("Tweets with Hashtags") +
   scale_x_discrete(labels=c("No hashtags", "Tweets with hashtags"))
 ```
+
 ![alt text](https://github.com/maitray16/Twitter-Analysis-using-R/blob/master/Images/HashTag.png?raw=true)
 
 
